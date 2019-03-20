@@ -1,10 +1,10 @@
-<#
+﻿<#
 
 .SYNOPSIS
 	Horizon View Agent Provisioning Error Check (CheckMK Check)
 
 .DESCRIPTION
-	This script can be used with NRPE/NSClient++ to allow Nagios to monitor Horizon View for VMs in a 'provisioning_error' state.
+	This script can be used with Check MK Agent to allow Check MK to monitor Horizon View for VMs in a 'provisioning_error' state.
 	It will return warning when one machine is detected, critical when more than one machine is detected.
 
 .EXAMPLE
@@ -23,10 +23,11 @@
 	Connect to Horizon View using a password file
 
 .NOTES
-	Name:        Horizon View Agent Provisioning Error Check (Nagios Check)
-	Version:     0.5
-	Author:      Thomas Chubb
-	Date:        26/10/2017
+	Name:        Horizon View Agent Provisioning Error Check (Chack MK Agent Check)
+	Version:     1.0
+	Author:      Thomas Chubb, Marcel debray
+	URL:		 https://github.com/mccrossen/checkmk_horizonview
+	Date:        20/03/2019
 
 #>
 
