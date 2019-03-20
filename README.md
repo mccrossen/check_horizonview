@@ -26,7 +26,16 @@ The Powershell scripts require the PowerCLI 6.5 R1 and Hv.Helper to be installed
 
 ## How it Works with Check MK
 
-...
+VMware PowerCLI als Administrator installieren
+
+`Install-Module -Name Vmware.PowerCLI`
+    
+Download VMware.Hv.Helper Module from Modules section on https://github.com/vmware/PowerCLI-Example-Scripts.
+Use $env:PSModulePath command to find out where is the path for Windows Powershell session modules and copy the VMware.Hv.Helper module to this directoy (often C:\Program Files\WindowsPowerShell\Modules)
+
+Copy the content of the folder who is called "local" to the location of the check_mk agent (default "C: \ Program Files (x86) \ check_mk \ plugins \ checkmk_horizonview") and the whole "checkmk_horizonview" folder into the plugins folder.
+
+Rescan the services from the monitored server inside the Check MK serversystem.
 
 ## Release Notes
 
@@ -34,7 +43,7 @@ v1.0 - Initial version changed from https://github.com/tschubb/check_horizonview
 
 ## Contribute/Feature Requests
 
-I am always happy to recieve feedback good or bad. I plan to improve and expand on these checks.
+I am always happy to recieve feedback good or bad.
 
 Drop me a line if you find a bug or want a feature adding to an existing check or have an idea for an addtional check.
 
