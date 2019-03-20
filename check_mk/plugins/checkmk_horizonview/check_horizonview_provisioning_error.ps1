@@ -1,4 +1,4 @@
-﻿<#
+<#
 
 .SYNOPSIS
 	Horizon View Agent Provisioning Error Check (CheckMK Check)
@@ -39,9 +39,6 @@ param (
 	[switch]$SetPasswordFilePassword = $false
 )
 
-# Clear host
-Clear-Host
-
 # Run password file set wizard if the switch is used
 if ($SetPasswordFilePassword) {
 	Write-Host "Password file setup wizard (if the password file exists it will be overwritten)`n"
@@ -63,7 +60,7 @@ try {
 	Import-Module VMware.VimAutomation.Core -ErrorAction Stop
 } catch {
 	# UNKNOWN
-	Write-Host '3 HVProblemVMsCount - UNKNOWN - Error loading the horizon view modules'
+	Write-Host '3 HVProvisioningError - UNKNOWN - Error loading the horizon view modules'
 	Exit 3
 }
 
@@ -81,7 +78,7 @@ try {
 	}
 } catch {
 	# UNKNOWN
-	Write-Host "3 HVProblemVMsCount - UNKNOWN - Error loading credentials using the $PasswordType"
+	Write-Host "3 HVProvisioningError - UNKNOWN - Error loading credentials using the $PasswordType"
 	Exit 3
 }
 
@@ -90,7 +87,7 @@ try {
 	Connect-HVServer -Server $ConnectionServer -Domain $UserDomain -Credential $Credentials -ErrorAction Stop | Out-Null
 } catch {
 	# UNKNOWN
-	Write-Host "3 HVProblemVMsCount - UNKNOWN - Error connecting to $ConnectionServer"
+	Write-Host "3 HVProvisioningError - UNKNOWN - Error connecting to $ConnectionServer"
 	Exit 3
 }
 
@@ -103,16 +100,16 @@ if ($ProblemVMs) {
 	$ProblemVMs | foreach {$ProblemVMsCount ++}
 } else {
 	# OK
-	Write-Host "0 HVProblemVMsCount ProblemVMsCount=0 OK: VMs in a provisioning error state: 0"
+	Write-Host "0 HVProvisioningError ProblemVMsCount=0 OK: VMs in a provisioning error state: 0"
 	Exit 0
 }
 
 if ($ProblemVMsCount -gt 1) {
 	# CRITICAL 
-	Write-Host "2 HVProblemVMsCount ProblemVMsCount=$($ProblemVMsCount) CRITICAL: VMs in a provisioning error state: $($ProblemVMsCount)"
+	Write-Host "2 HVProvisioningError ProblemVMsCount=$($ProblemVMsCount) CRITICAL: VMs in a provisioning error state: $($ProblemVMsCount)"
 	Exit 2
 } else {
 	# WARNING
-	Write-Host "1 HVProblemVMsCount ProblemVMsCount=$($ProblemVMsCount) WARNING: VMs in a provisioning error state: $($ProblemVMsCount)"
+	Write-Host "1 HVProvisioningError ProblemVMsCount=$($ProblemVMsCount) WARNING: VMs in a provisioning error state: $($ProblemVMsCount)"
 	Exit 1
 }
