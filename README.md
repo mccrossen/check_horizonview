@@ -1,8 +1,8 @@
 # check_horizonview
 
-I have recently started writing a collection of Nagios checks to monitor Horizon View to flag issues that need investigating. More in-depth monitoring can be done via vRealise. I am planning to add/remove/combine these checks as time goes on. The scripts are designed to used with NRPE/NSclient++ on a Windows host.
+I have start to writing a collection of checkmk checks to monitor Horizon View on the base of https://github.com/tschubb/check_horizonview The scripts are designed to used with Check MK Agent on a Windows host.
 
-**Current Version:** Release v1.4
+**Current Version:** Release v1.0
 
 Checks:
 
@@ -15,29 +15,22 @@ Use Powershell Get-Help for more detail on how to use each script.
 
 ## Script Dependencies
 
+Microsoft Windows Powershell 5.1
+[Windows Powershell Downloads](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)
+
 The Powershell scripts require the PowerCLI 6.5 R1 and Hv.Helper to be installed.
 
 [VMware blog](https://blogs.vmware.com/euc/2017/01/vmware-horizon-7-powercli-6-5.html)
 
 [Hv.Helper Github](https://github.com/vmware/PowerCLI-Example-Scripts)
 
-## How it Works with Nagios Core
+## How it Works with Check MK
 
-Nagios Core --> NRPE/NSClient++ --> Horizon View API
-
-I plan to do a full guide on how to setup these checks in the furture.
+...
 
 ## Release Notes
 
-v1.0 - Initial version
-
-v1.1 - Added per pool session count to perfdata string
-
-v1.2 - The perfdata string now includes pools with zero sessions
-
-v1.3 - Change perfdata delimiter to a space
-
-v1.4 - Corrected 'critical' output typo in the provisioning error check and add new check to monitor for disabled pools
+v1.0 - Initial version changed from https://github.com/tschubb/check_horizonview
 
 ## Contribute/Feature Requests
 
@@ -47,4 +40,4 @@ Drop me a line if you find a bug or want a feature adding to an existing check o
 
 Feel free to message me if you need help getting the checks working in your environment. 
 
-https://github.com/tschubb/check_horizonview
+https://github.com/mccrossen/checkmk_horizonview
