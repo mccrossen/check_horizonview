@@ -103,7 +103,7 @@ if ($ProblemVMs) {
 	$ProblemVMs | foreach {$ProblemVMsCount ++}
 } else {
 	# OK
-	Write-Host "0 HVProblemVMsCount ProblemVMsCount=$($ProblemVMsCount) OK: VMs in a provisioning error state: 0"
+	Write-Host "0 HVProblemVMsCount ProblemVMsCount=0 OK: VMs in a provisioning error state: 0"
 	Exit 0
 }
 
